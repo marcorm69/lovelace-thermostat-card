@@ -1,0 +1,38 @@
+type: custom:button-card
+template: climate_thermostat
+entity: climate.studio
+name: studio
+custom_fields: !include thermostat_card.yaml
+style: |
+  #root > * {
+    margin: 0!Important
+  }
+  ha-card {
+    padding: 0px!Important;
+    margin: 0px!Important;
+    background: none;
+  }
+  .ellipsis {
+    height: 100%;
+  }
+  .wrapper {
+    position: relative;    
+  }
+  .therm_on {
+      fill:{% if state_attr(config.entity, "hvac_action") == 'heating'  %} 
+                      orange
+                    {% else %}
+                      #646464
+                    {% endif %};
+  }
+
+  .indicator {
+      fill: #fff;
+      transform-origin: 50% 50%;      
+      transform:  {% set res = {          
+            "degree": (state_attr(config.entity, "temperature")*9)-135
+          }%}
+          rotate({{ res.degree }}deg);
+  }
+view_layout:
+  grid-area: term
