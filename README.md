@@ -17,8 +17,15 @@ In addition to the default HA cards you will need to install the following cards
 * [custom:layout-card](https://github.com/thomasloven/lovelace-layout-card)
 * [custom:button-card](https://github.com/custom-cards/button-card)
   
-All cards can be installed via [HACS](https://github.com/hacs/integration)
+All cards can be installed via [HACS](https://github.com/hacs/integration)  
 
+> In order to install this card the basic knowledge of HA architecture and yaml is required (sensor, package)  
+  
+> For advanced configuration (change colors, style, structure or other) the knowledge of css and advanced  knowledge of yaml and HA is reqired 
+  
+I do not provide support in this regard  
+  
+  
 ## Introduction
 
 This version consists of the following files:
@@ -46,7 +53,7 @@ This version consists of the following files:
 This code is written for Netatmo Valve, it is possible that other valves and/or thermostats have different names, attributes, states and sensors.
 Refer to your devices for configuration.
 
-### Sensors and other
+## Installation sensors
 
 In **/config/config_climate.yaml** you can find the base set to install for full card operation.  
 You can insert in the existent config files (configuration.yaml, sensor.yaml or other) or use as package. Depending your configuration.  
@@ -57,11 +64,11 @@ If you have multiple valves/thermostats, just duplicate the various sensors by c
 - In the **- platform: statistics** you can change hours to monitor to calculate the min and max temperature.  
   By default is 168h (one week)
 
-### Templates
+## Installation Templates
 
-In **/templates/template_button_climate.yaml** you can found the style for the custom button card used. You can change color, border and various style.
+In **/templates/template_button_climate.yaml** you can found the style for the custom button card used. You can change color, border and various style.  
 
-### Cards configuration
+## Cards configuration
 
 #### File climate_studio.yaml
 
