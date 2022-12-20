@@ -32,7 +32,7 @@ sensor:
     state_characteristic: value_min
     sampling_size: 20
     max_age:
-      hours: 189
+      hours: 168
 
   - platform: statistics
     name: "Studio max"
@@ -40,4 +40,4 @@ sensor:
     state_characteristic: value_max
     sampling_size: 20
     max_age:
-      hours: 189
+      hours: 168
