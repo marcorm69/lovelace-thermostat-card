@@ -20,10 +20,10 @@ style: |
   }
   .therm_on {
       fill:{% if state_attr(config.entity, "hvac_action") == 'heating'  %} 
-                      orange
-                    {% else %}
-                      #646464
-                    {% endif %};
+             orange
+           {% else %}
+             #646464
+           {% endif %};
   }
 
   .indicator {
