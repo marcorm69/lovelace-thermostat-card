@@ -1,0 +1,92 @@
+climate_base:
+  styles:
+    card:
+      - font-family: "Oswald"
+      - height: 100%
+      - border-radius: 5px
+      - background-color: transparent
+
+climate_statistic:
+  template: climate_base
+  show_state: false
+  show_icon: false
+  show_label: true
+  aspect_ratio: 5/2
+  label: >
+    [[[
+      var decimalTimeString = entity.state;
+      var n = new Date(0,0);
+      n.setSeconds(+decimalTimeString * 60 * 60);
+      return n.toTimeString().slice(0, 8);
+    ]]]
+  styles:
+    card:
+      - background-color: transparent
+      - font-size: 1.2em
+      - text-transform: uppercase
+      - padding: 0px!Important
+
+climate_thermostat:
+  template: climate_base
+  show_state: false
+  show_name: false
+  show_label: false
+  show_icon: false
+  aspect_ratio: 1/1
+  styles:
+    grid:
+      - grid-template-areas: '"therm"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: 100%
+
+climate_states:
+  template: climate_base
+  color_type: icon
+  show_icon: true
+  show_name: true
+  show_state: false
+  show_label: false
+  aspect_ratio: 1/1
+  styles:
+    card:
+      - background-color: transparent
+    name:
+      - text-transform: uppercase
+      - font-size: 14px
+
+climate_temperature:
+  template: climate_base
+  show_state: false
+  show_name: false
+  show_label: false
+  show_icon: true
+  color_type: icon
+  aspect_ratio: 1/1
+  size: 100%
+  styles:
+    card:
+      - background: none
+      - border-radius: 50%
+      - left: 25%
+      - top: -60%
+  style: |
+    ha-card {
+      width: 50%!Important;
+      height: 50%!Important;
+    }
+
+climate_minmax:
+  template: climate_base
+  color_type: icon
+  show_state: true
+  show_icon: true
+  icon: mdi:arrow-down-bold
+  styles:
+    grid:
+      - grid-template-areas: '"n n" "i s"'
+      - grid-template-columns: 50% 50%
+    card:
+      - padding-left: 10px
+      - padding-right: 10px
+      - padding-bottom: 10px
+      - border-top: 1px solid grey
