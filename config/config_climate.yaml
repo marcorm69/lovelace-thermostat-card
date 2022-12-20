@@ -16,7 +16,7 @@ utility_meter:
     source: sensor.valvStudioDay
     cycle: yearly
     name: Valvola Studio Year
-	
+
 sensor:
   - platform: history_stats
     name: valvStudioDay
