@@ -61,5 +61,78 @@ If you have multiple valves/thermostats, just duplicate the various sensors by c
 
 In **/templates/template_button_climate.yaml** you can found the style for the custom button card used. You can change color, border and various style.
 
-### Cards
+### Cards configuration
 
+#### File climate_studio.yaml
+
+Change the entity in:
+```yaml
+type: custom:button-card
+template: climate_thermostat
+entity: climate.studio #Change here
+```
+
+If necessary, change the attributes and value in:
+```yaml
+  .therm_on {
+      fill:{% if state_attr(config.entity, "hvac_action") == 'heating'  %}  #Change here
+             orange   #Change active color
+           {% else %}
+             #646464  #Change not active color
+           {% endif %};
+  }
+```
+
+If necessary, change the attributes and value in:
+```yaml  
+  .indicator {
+      fill: #fff;
+      transform-origin: 50% 50%;      
+      transform:  {% set res = {          
+            "degree": (state_attr(config.entity, "temperature")*9)-135 #Change here
+          }%}
+          rotate({{ res.degree }}deg);
+  }
+```
+**ATTENTION** not change degree vaule and operation, is necessary to move the indicator on thermostat
+
+#### File thermostat_card.yaml
+
+This file contains the SVG thermoatat image, it's possible use the same file for all thermostat\valve but you can config, if necessary, the attributes.
+At the end of file, you can find the 3 text configurated: set temperature, current temperature, entity name, if necessary, change the attributes
+```html  
+      <text x="50%" y="30%" class="text_shadow" text-anchor="middle"  font-size="20px" fill="#fff">${entity.attributes.temperature}</text>      
+      <text x="50%" y="55%" class="text_shadow" text-anchor="middle"  font-size="62px" fill="#fff">${entity.attributes.current_temperature}</text>      
+      <text x="50%" y="68%" class="text_shadow text_area" text-anchor="middle"  fill="#fff">${entity.attributes.friendly_name}</text>   
+```
+  
+On top of the file you can found the card style for text color, fill color,  shadow, font:
+
+```html  
+      <style type="text/css">
+        .st0{fill:url(#SVGID_1_);}
+        .st1{fill:#808080;}
+        .st2{fill:#FFFFFF;}
+        text {font-family: 'Oswald';}
+        .text_shadow {text-shadow: 8px 8px 8px #474747, 19px 19px 3px rgba(255,103,41,0);}
+        .text_shadow.text_area {
+            font-size: 22px;
+            font-family: 'Oswald';
+            text-transform: uppercase;
+            text-decoration: overline;
+         }
+      </style>
+```
+
+And after the gradient for filling svg image
+
+```html  
+      <g>
+        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="25.5" y1="150" x2="274.5" y2="150">
+          <stop  offset="0" style="stop-color:#0072BB"/>
+          <stop  offset="0.5223" style="stop-color:#FF7B03"/>
+          <stop  offset="1" style="stop-color:#8B0000"/>
+        </linearGradient>
+        <circle class="st0" cx="150" cy="150" r="124.5"/>
+      </g>
+``` 
