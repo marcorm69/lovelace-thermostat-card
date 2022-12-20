@@ -1,0 +1,43 @@
+template:
+  - sensor:
+      - name: Temperatura Studio
+        state: "{{ state_attr('climate.studio', 'current_temperature') }}"
+
+utility_meter:
+  valvola_studio_day:
+    source: sensor.valvStudioDay
+    cycle: daily
+    name: Valvola Studio Day
+  valvola_studio_month:
+    source: sensor.valvStudioDay
+    cycle: monthly
+    name: Valvola Studio Month
+  valvola_studio_year:
+    source: sensor.valvStudioDay
+    cycle: yearly
+    name: Valvola Studio Year
+	
+sensor:
+  - platform: history_stats
+    name: valvStudioDay
+    entity_id: binary_sensor.stato_valvola_studio
+    state: "on"
+    type: time
+    start: "{{ today_at() }}"
+    end: "{{ now() }}"
+
+  - platform: statistics
+    name: "Studio min"
+    entity_id: sensor.temperatura_studio
+    state_characteristic: value_min
+    sampling_size: 20
+    max_age:
+      hours: 189
+
+  - platform: statistics
+    name: "Studio max"
+    entity_id: sensor.temperatura_studio
+    state_characteristic: value_max
+    sampling_size: 20
+    max_age:
+      hours: 189
