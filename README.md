@@ -7,7 +7,6 @@ This is not the classic Home Assistant card, but only a yaml configuration which
 In the future, depending on the my free time, I can may try to turn it into an installation with HACS.  
 There are currently no repositories to add, js to install or anything. All code is based on yaml.  
 
-![image](https://user-images.githubusercontent.com/18568434/208685340-16774dad-45d2-4f5c-830e-46a6dfb75725.png)
 
 ## Prerequisite
 
