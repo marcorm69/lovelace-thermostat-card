@@ -1,6 +1,10 @@
 # lovelace-thermostat-card
 A new thermostat card for Home Assistant
 
+> This guide is still incomplete.  
+> The code still has some shortcomings.  
+> This work is part of my spare time, I can't give any indication when it will be completed.  
+
 ## Description
 
 This is not the classic Home Assistant card, but only a yaml configuration which gives the opportunity to manually create a more appealing thermostat card than the default one.  
