@@ -88,7 +88,17 @@ If necessary, change the attributes and value in:
           rotate({{ res.degree }}deg);
   }
 ```
-**ATTENTION** not change degree vaule and operation, is necessary to move the indicator on thermostat
+```yaml  
+  .indicator_set {
+      fill: #fff;
+      transform-origin: 50% 50%;      
+      transform:  {% set res = {          
+            "degree": (state_attr(config.entity, "current_temperature")*9)-135 #Change here
+          }%}
+          rotate({{ res.degree }}deg);
+  }
+```
+**ATTENTION** not change degree value in **degree** row, is necessary to move the indicators on thermostat
 
 #### File thermostat_card.yaml
 
