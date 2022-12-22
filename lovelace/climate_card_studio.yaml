@@ -1,0 +1,61 @@
+type: vertical-stack
+cards:
+  #--------------- Thermostat area
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        background-color: #64646466;
+        }
+    card:
+      type: custom:layout-card
+      layout_type: custom:grid-layout
+      layout:
+        grid-template-columns: 20%  20%  20%
+        grid-template-rows: 1fr min-content 1fr 0px
+        grid-template-areas: |
+          "term term term  stat"
+          "term term term  stat"
+          "term term term  stat"
+          "up . down . "
+        margin: -4px
+        padding: 0
+        card_margin: 0
+      cards:
+        #-------- Thermostat
+        - !include climate_studio.yaml
+        #-------- Up\Down button
+        - type: custom:button-card
+          template: climate_temperature
+          color: "#0072BB"
+          icon: mdi:arrow-down-bold-circle
+          tap_action:
+            action: call-service
+            service: climate.set_temperature
+            service_data:
+              entity_id: climate.studio
+              target: '{{ state_attr("climate.studio", "temperature") | float +  0.5}} '
+
+          view_layout:
+            grid-area: up
+        - type: custom:button-card
+          template: climate_temperature
+          color_type: icon
+          color: "#a32727"
+          icon: mdi:arrow-up-bold-circle
+          view_layout:
+            grid-area: down
+        #-------- Area statistiche\info
+        - !include climate_info.yaml
+
+  #--------- Area preset\state\stat
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        background-color: rgba(100,100,100,0.4);
+        margin-top: 0px;
+      }
+    card:
+      type: vertical-stack
+      cards:
+        - !include climate_states.yaml
+        - !include climate_statistics.yaml
