@@ -1,0 +1,104 @@
+type: custom:mod-card
+style: |
+  ha-card {
+    border-top: 1px solid grey;
+  }
+card:
+  #--------- State
+  type: horizontal-stack
+  cards:
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      name: Caldo
+      icon: mdi:fire
+      state:
+        - value: "heat"
+          color: orange
+
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      name: Auto
+      icon: mdi:update
+      state:
+        - value: "auto"
+          color: orange
+    #--------- Preset
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      name: Away
+      icon: mdi:home
+      state:
+        - operator: template
+          value: >
+            [[[
+              return entity.attributes.preset_mode === 'away'
+            ]]]
+          color: "orange"
+      tap_action:
+        action: call-service
+        service: climate.set_preset_mode
+        service_data:
+          preset_mode: away
+          entity_id: climate.studio
+
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      name: Boost
+      icon: mdi:fire
+      state:
+        - operator: template
+          value: >
+            [[[
+              return entity.attributes.preset_mode === 'boost'
+            ]]]
+          color: "orange"
+      tap_action:
+        action: call-service
+        service: climate.set_preset_mode
+        service_data:
+          preset_mode: boost
+          entity_id: climate.studio
+
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      name: Freeze
+      icon: mdi:snowflake-off
+      state:
+        - operator: template
+          value: >
+            [[[
+              return entity.attributes.preset_mode === 'Frost Guard'
+            ]]]
+          color: "orange"
+      tap_action:
+        action: call-service
+        service: climate.set_preset_mode
+        service_data:
+          preset_mode: "Frost Guard"
+          entity_id: climate.studio
+
+    - type: custom:button-card
+      entity: climate.studio
+      template: climate_states
+      show_icon: true
+      show_name: true
+      name: Schedule
+      icon: mdi:clock-outline
+      state:
+        - operator: template
+          value: >
+            [[[
+              return entity.attributes.preset_mode === 'Schedule'
+            ]]]
+          color: "orange"
+      tap_action:
+        action: call-service
+        service: climate.set_preset_mode
+        service_data:
+          preset_mode: "Schedule"
+          entity_id: climate.studio
