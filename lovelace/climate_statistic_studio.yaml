@@ -1,0 +1,21 @@
+type: custom:mod-card
+style: |
+  ha-card {
+    border-top: 1px solid grey;
+  }
+card:
+  #--------- Statistics
+  type: horizontal-stack
+  cards:
+    - type: "custom:button-card"
+      entity: sensor.valvola_studio_day
+      template: climate_statistic
+      name: Oggi
+    - type: "custom:button-card"
+      entity: sensor.valvola_studio_month
+      name: Mese
+      template: climate_statistic
+    - type: "custom:button-card"
+      entity: sensor.valvola_studio_year
+      template: climate_statistic
+      name: Anno
