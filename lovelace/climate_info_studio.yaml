@@ -1,0 +1,23 @@
+type: vertical-stack
+cards:
+  #------- Temp min
+  - type: "custom:button-card"
+    entity: sensor.studio_min
+    template: climate_minmax
+    name: MIN SETT
+    icon: mdi:arrow-down-bold
+    color: "#0072BB"
+
+  #------- Temp max
+  - type: "custom:button-card"
+    entity: sensor.studio_max
+    template: climate_minmax
+    name: MAX SETT
+    icon: mdi:arrow-up-bold
+    color: "#a32727"
+
+  #------- Battery
+  - !include climate_trv_studio.yaml
+  - !include climate_battery_studio.yaml
+view_layout:
+  grid-area: stat
