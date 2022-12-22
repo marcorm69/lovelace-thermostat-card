@@ -57,5 +57,5 @@ cards:
     card:
       type: vertical-stack
       cards:
-        - !include climate_states.yaml
-        - !include climate_statistics.yaml
+        - !include climate_states_studio.yaml
+        - !include climate_statistics_studio.yaml
