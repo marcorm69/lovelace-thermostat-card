@@ -29,24 +29,10 @@ I do not provide support in this regard
   
 ## Introduction
 
-This version consists of the following files:
+The card is  structured as follows
 
-* **/config/config_climate.yaml**  
-  Contains sensors, binary sensors, history_stats and utility meeter to create create before the card installation and configuration   
-  
-* /templates/template_button_climate.yaml  
-  Contains the template for custom button card.  
-  **This file can be used for all the valves\thermostats without needing to be duplicated and configured for each of them**
-  
-* /lovelace/climate_card_studio.yaml  
-  Contain the master structure for card
+![image](https://user-images.githubusercontent.com/18568434/209206995-366a70d7-5450-4291-9c52-0a851122f8fa.png)
 
-* /lovelace/climate_studio.yaml  
-  Contain the card structure for thermoatat  
-
-* /lovelace/thermostat_card_studio.yaml  
-  Contain the thermostat card definition.  
-  **This file can be used for all the valves\thermostats without needing to be duplicated and configured for each of them**
  
 
 ## Installation and configuration  
